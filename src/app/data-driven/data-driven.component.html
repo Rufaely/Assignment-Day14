@@ -1,0 +1,42 @@
+<form [formGroup]="userData" (ngSubmit)="onSubmit()">
+   <div class="form-group">
+    <label for="name">Name</label>
+    <input type="name"           
+           formControlName="name">
+
+      <div *ngIf="!userData.controls['name'].valid">
+          <span style="color:red"> Required!</span>
+      </div>
+  </div>
+    <br>
+  <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text"            
+             formControlName="email" >
+
+      <div *ngIf="!userData.controls['email'].valid">
+        <span style="color:red"> Required!</span>
+      </div>
+    </div>
+<br>
+    <div class="form-group">
+      <label for="post">Post</label>
+
+             <textarea onfocus="if(this.value=='zipcode')this.value='';" onblur="if(this.value=='')this.value='zipcode';" 
+               formControlName="post" > </textarea>
+        <div *ngIf="!userData.controls['post'].valid">
+            <span style="color:red"> Minimum length 10!</span>
+        </div>
+    </div>
+    <br>
+ 
+  <button type="submit" class="btn btn-primary" [disabled]="!userData.valid">Submit</button>
+  <button type="button" class="btn btn-default" (click)="onGetData()">Get Data</button>
+</form>
+
+
+
+
+
+
+
